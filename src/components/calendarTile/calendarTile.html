@@ -2,7 +2,7 @@
     <div class="form">
         <div class="form_info">
             <div class="form_price">{{ priceWithCurrency }}</div>
-            <div>stars rating here</div>
+            <stars-rating :rating="rating" :ratingsCount="ratingsCount" />
         </div>
         <form-button :callback="handleReservation" />
         <div>calendar box here</div>

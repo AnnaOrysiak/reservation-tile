@@ -1,5 +1,6 @@
 import { Vue, Component, Prop } from "vue-property-decorator";
 import FormButton from '../formButton/FormButton.vue';
+import StarsRating from '../starsRating/StarsRating.vue';
 import WithRender from './calendarTile.html';
 import './calendarTile.scss';
 
@@ -7,6 +8,7 @@ import './calendarTile.scss';
 @Component({
     components: {
         FormButton,
+        StarsRating,
     }
 })
 export default class CalendarTile extends Vue {
