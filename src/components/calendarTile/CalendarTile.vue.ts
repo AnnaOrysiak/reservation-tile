@@ -1,9 +1,14 @@
 import { Vue, Component, Prop } from "vue-property-decorator";
+import FormButton from '../formButton/FormButton.vue';
 import WithRender from './calendarTile.html';
 import './calendarTile.scss';
 
 @WithRender
-@Component
+@Component({
+    components: {
+        FormButton,
+    }
+})
 export default class CalendarTile extends Vue {
     @Prop() price: number;
     @Prop() rating: number;
@@ -18,6 +23,10 @@ export default class CalendarTile extends Vue {
 
     get priceWithCurrency(): string {
         return `${this.price} ${this.currency}`;
+    }
+
+    handleReservation(): void {
+        console.log('make reservation');
     }
 
 }
