@@ -36,6 +36,26 @@ module.exports = {
                     name: '[name].[ext]?[hash]'
                 }
             },
+            {
+                test: /\.html$/,
+                loader: 'vue-template-loader',
+                exclude: /index.html/,
+                options: {
+                    transformToRequire: {
+                        img: 'src'
+                    }
+                }
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                    'vue-style-loader',
+                    'css-loader',
+                    {
+                        loader: 'sass-loader',
+                    }
+                ]
+            }
         ]
     },
     resolve: {
