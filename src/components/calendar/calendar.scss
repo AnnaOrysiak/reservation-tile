@@ -1,0 +1,191 @@
+@import 'src/variables.scss';
+@import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+.calendar {
+    width: 100%;
+    height: 50px;
+    margin-top: 16px;
+    border-radius: 30px;
+    border: 1px solid $greenBorderColor;
+    position: relative;
+
+    &_reservation {
+        display: flex;
+        justify-content: space-between;
+        padding: 6px 8px;
+        
+        .reservation-date {
+            position: relative;
+            width: 120px;
+        }
+    }
+
+    &_input {
+        font-size: 14px;
+        line-height: 1;
+        font-weight: 600;
+        padding: 11px 12px;
+        border-radius: 34px;
+        cursor: pointer;
+
+        &--active {
+            display: flex;
+            justify-content: space-between;
+            color: $mainGreen;
+            background-color: $lightGreen;
+        }
+    }
+
+    .material-icons {
+        &--right {
+            transform: translateY(6px);
+            margin: 0 8px;
+        }
+        &.close {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translate(-50%, -50%);
+            font-size: 16px;
+            align-self: center;
+            cursor: pointer;
+        }
+    }
+    
+   .date-picker {
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 50%;
+        width: 300px;
+        padding: 24px;
+        border-radius: 20px;
+        background: $mainWhite;
+        box-shadow: 0px 10px 40px $shadowColor;
+        transform: translateX(-50%);
+        
+        .months {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 8px;
+            border: 1px solid #D8D8D8;
+            border-radius: 48px;
+            overflow: hidden;
+
+            p {
+                font-weight: 700;
+            }
+        }
+        
+        .days {
+            margin: 8px 0;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 600;
+
+            .labels {
+                display: flex;
+            }
+            .day {
+                width: 32px;
+                line-height: 32px;
+                width: calc(100% / 7);
+            }
+            .dates {
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+
+                &::after {
+                    content: '';
+                    flex: auto;
+                }
+                .date {
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    width: calc(100% / 7);
+                    height: 38px;
+                    cursor: pointer;
+
+                    span {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 30px;
+                        height: 30px;
+                        border-radius: 50%;
+                    }
+                    &:hover:not(.disabled):not(.unavailabled) {
+                        span {
+                            background-color: $lightGreen;
+                            color: $mainGreen;
+                        }
+                    }
+                    &.today span {
+                        color: $mainGreen;
+                        border: 2px solid $mainGreen;
+                    }
+                    &.scoped {
+                        span {
+                            color: $mainGreen;
+                        }
+                        &:before {
+                            content: '';
+                            position: absolute;
+                            top: 50%;
+                            left: 0;
+                            width: 100%;
+                            height: 80%;
+                            background-color: $lightGreen;
+                            transform: translateY(-50%);
+                            z-index: -1;
+                        }
+                    }
+                    &.start, &.end {
+                        span {
+                            color: $mainWhite;
+                            background-color: $mainGreen;
+                        }
+                        &:before {
+                            width: 50%;
+                        }
+                    }
+                    &.start:before {
+                        transform: translate(100%, -50%);
+                    }
+                    &.disabled, &.unavailabled {
+                        cursor: not-allowed;
+                        pointer-events: none;
+                        
+                        span, &:hover span {
+                            color: lightgray;
+                        } 
+                        
+                    }
+                }
+            }
+        }
+   }
+   
+   button {
+       border: none;
+       border-radius: 38px;
+       height: 38px;
+       background-color: $mainWhite;
+       color: $mainTextColor;
+       cursor: pointer;
+       &:hover {
+        background-color: $lightGreen;
+        color: $mainGreen;
+       }
+   }
+}
+.slide-enter-active, .slide-leave-active {
+    transition: opacity .2s ease-in-out, transform .2s ease-in-out;
+  }
+  
+  .slide-enter, .slide-leave-to {
+    opacity: 0;
+    transform: translateX(20px);
+  }

@@ -1,0 +1,45 @@
+@import 'src/variables.scss';
+@import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+.rating {
+    display: flex;
+    padding-top: 12px;
+
+    &_count {
+        font-size: 12px;
+    }
+}
+
+.stars {
+    margin-right: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: $grayColor;
+
+    .star {
+        font-size: 16px;
+        display: block;
+        font-family: 'FontAwesome';
+
+        &::after {
+            content: '\f006';
+        }
+        &:last-child {
+            margin-right: 0;
+        }
+        &--full {
+            &:after {
+                content: "\f005";
+                color: $mainGreen;
+            }
+        }
+        &--half {
+            &:after {
+                content: "\f123";
+                color: $mainGreen
+            }
+        }
+    }
+
+}

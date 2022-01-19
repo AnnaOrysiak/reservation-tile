@@ -1,0 +1,15 @@
+@import 'src/variables.scss';
+
+.form-button {
+    padding: 13px 16px;
+    border: none;
+    border-radius: 48px;
+    min-width: 70px;
+    box-sizing: content-box;
+    background: $mainGreen;
+    color: $buttonTextColor;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 22px;
+    cursor: pointer;
+}

@@ -1,0 +1,39 @@
+<div class="calendar">
+    <div class="calendar_reservation">
+        <div class="reservation-date">
+            <div class="calendar_input" :class="{ 'calendar_input--active': editFrom }" @click="editDate('from')">
+                {{ dateFrom }}
+            </div>
+            <span v-if="selectedDates.from" class="material-icons close" @click="removeDate('from')">close</span>
+        </div>
+
+        <span class="material-icons material-icons--right">arrow_forward</span>
+        <div class="reservation-date">
+            <div class="calendar_input" :class="{ 'calendar_input--active': editTo }" @click="editDate('to')">
+                {{ dateTo }}
+            </div>
+            <span v-if="selectedDates.to" class="material-icons close" @click="removeDate('to')">close</span>
+        </div>
+    </div>
+
+    <transition name="slide" mode="out-in">
+        <div v-if="editMode" class="date-picker">
+            <div class="months" :key="year">
+                <button type="button" class="material-icons" @click="goToPrevMonth" v-html="'chevron_left'" />
+                <p>{{ getMonth(month) }} {{ year }}</p>
+                <button type="button" class="material-icons" @click="goToNextMonth" v-html="'chevron_right'" />
+            </div>
+            <div class="days">
+                <div class="labels">
+                    <div v-for="day of weekDays" class="day" v-html="day"></div>
+                </div>
+                <div class="dates">
+                    <div v-for="(day, index) of monthlyDays" class="date" :class="getClasses(day)" :value="day.value" @click="handleSelect($event, day.value)" :key="index">
+                        <span> {{ day.label }} </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </transition>
+
+</div>
