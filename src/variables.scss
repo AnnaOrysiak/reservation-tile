@@ -1,12 +1,14 @@
 // main colors
 $mainWhite: #fff;
 $mainGreen: #4E9845;
-$mainTextColor: #333;
+$mainBlackColor: #333;
+$mainTextColor: $mainBlackColor;
 $buttonTextColor: $mainWhite;
 $alertTextColor: #A00;
 $greenBorderColor: #A6CBA2;
 $lightGreen: #EDF5EC;
 $shadowColor: rgba(0, 0, 0, 0.15);
+$grayColor: lighten($mainBlackColor, 50%);
 
 // fonts
 $mainFont: 'Montserrat', sans-serif;

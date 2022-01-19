@@ -5,6 +5,17 @@
             <stars-rating :rating="rating" :ratingsCount="ratingsCount" />
         </div>
         <form-button :callback="handleReservation" />
-        <div>calendar box here</div>
+        <calendar :selectedDates="selectedDates" :unavailableDates="unavailableDates" :reservationError='reservationError' @showError="handleError" @clearErrors="clearErrors" />
     </div>
+
+    <!-- the code below should be transformed into some global, more complex notification component that would use store and display at the main component level -->
+    <transition name="slide" mode="out-in">
+        <div v-if="showError && reservationError" class="error-popup">
+            <span class="material-icons report">error</span>
+            <p class="error-popup_message" v-html="errorMessage"></p>
+            <button type="button" @click="closeError">
+                <span class="material-icons close">close</span>
+            </button>
+        </div>
+    </transition>
 </div>
